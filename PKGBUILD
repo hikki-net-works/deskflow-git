@@ -41,7 +41,7 @@ optdepends=(
 provides=("$_basename")
 conflicts=("$_basename" 'synergy')
 source=("$_basename::git+https://github.com/deskflow/deskflow.git#tag=${pkgver/.r/+r}")
-sha256sums=('SKIP')
+sha256sums=('0067a3c6e23fc3adc7a7e5a7af0520885a4a0193c13c031f4e123683fa9b480d')
 
 prepare() {
 	cd "$_basename"
