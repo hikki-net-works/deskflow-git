@@ -5,7 +5,7 @@
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0.r1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -14,17 +14,11 @@ depends=(
 	'libxtst'
 	'libxkbcommon'
 	'libnotify'
-	# 'libei' # not yet used in this version
-	# 'libportal' # not yet used in this version
+	'libei'
+	'libportal'
 	'qt6-base'
 	'gdk-pixbuf2'
 	'pugixml'
-	'libxkbcommon-x11' # make optional for next version
-	'libxinerama' # make optional for next version
-	'libxrandr' # make optional for next version
-	# 'libx11: X11 support' # dependency of libxtst
-	# 'libxext: X11 support' # dependency of libxtst
-	# 'libxi: X11 support' # dependency of libxtst
 )
 makedepends=(
 	'git'
@@ -37,6 +31,12 @@ makedepends=(
 optdepends=(
 	'openssl: TLS encryption'
 	'gtk3: GTK file/dir picker'
+	# 'libx11: X11 support' # dependency of libxtst
+	# 'libxext: X11 support' # dependency of libxtst
+	# 'libxi: X11 support' # dependency of libxtst
+	'libxkbcommon-x11: X11 support'
+	'libxinerama: X11 support'
+	'libxrandr: X11 support'
 )
 provides=("$_basename")
 conflicts=("$_basename" 'synergy')
