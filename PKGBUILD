@@ -1,12 +1,12 @@
 # Maintainer: SelfRef <arch@selfref.dev>
 
 # INFO: By default this package is configured to use Wayland only.
-#       In order to complile version for use with X11 install optional dependency for that case.
+#       In order to complile version for use with X11, install optional dependencies for that case.
 
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0.r1
-pkgrel=4
+pkgrel=5
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -37,6 +37,7 @@ optdepends=(
 	# 'libxext: X11 support' # dependency of libxtst
 	# 'libxi: X11 support' # dependency of libxtst
 	'libxkbcommon-x11: X11 support'
+	'libxkbfile: X11 support'
 	'libxinerama: X11 support'
 	'libxrandr: X11 support'
 )

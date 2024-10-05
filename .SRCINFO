@@ -1,7 +1,7 @@
 pkgbase = deskflow
 	pkgdesc = Deskflow lets you share one mouse and keyboard between multiple computers (stable version)
 	pkgver = 1.17.0.r1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://deskflow.org/
 	arch = x86_64
 	license = GPL-2.0
@@ -23,6 +23,7 @@ pkgbase = deskflow
 	optdepends = openssl: TLS encryption
 	optdepends = gtk3: GTK file/dir picker
 	optdepends = libxkbcommon-x11: X11 support
+	optdepends = libxkbfile: X11 support
 	optdepends = libxinerama: X11 support
 	optdepends = libxrandr: X11 support
 	provides = deskflow
