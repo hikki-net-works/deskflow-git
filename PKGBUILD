@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0.r1
-pkgrel=3
+pkgrel=4
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -24,6 +24,7 @@ depends=(
 makedepends=(
 	'git'
 	'cmake'
+	'python'
 	'libxkbfile'
 	'gtest'
 	'tomlplusplus'
