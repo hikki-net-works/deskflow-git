@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0.r1
-pkgrel=6
+pkgrel=7
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -56,6 +56,7 @@ build() {
 
 check() {
 	cd "$_basename"
+	export QT_QPA_PLATFORM=offscreen
 	./build/bin/unittests
 	./build/bin/integtests
 }
