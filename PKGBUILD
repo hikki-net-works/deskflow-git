@@ -5,8 +5,8 @@
 
 _basename=deskflow
 pkgname=${_basename}
-pkgver=1.17.0.r1
-pkgrel=7
+pkgver=1.17.0
+pkgrel=8
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -41,7 +41,7 @@ optdepends=(
 	'libxinerama: X11 support'
 	'libxrandr: X11 support'
 )
-source=("$_basename::git+https://github.com/deskflow/deskflow.git#tag=${pkgver/.r/+r}")
+source=("$_basename::git+https://github.com/deskflow/deskflow.git#tag=v$pkgver")
 sha256sums=('39928f513169fef741b98c756e52c703072959a0d8aa03ab15d91d6f03ca5391')
 
 prepare() {
