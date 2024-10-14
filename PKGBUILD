@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -46,7 +46,9 @@ sha256sums=('39928f513169fef741b98c756e52c703072959a0d8aa03ab15d91d6f03ca5391')
 
 prepare() {
 	cd "$_basename"
-	cmake -B build
+	cmake -B build \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-Wno-dev
 }
 
 build() {
