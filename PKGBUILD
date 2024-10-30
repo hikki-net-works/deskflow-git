@@ -48,7 +48,7 @@ prepare() {
 	cd "$_basename"
 	cmake -B build \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \ # Should be fixed for next release https://github.com/deskflow/deskflow/pull/7743
+		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
 		-Wno-dev
 }
 
