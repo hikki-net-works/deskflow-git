@@ -6,7 +6,7 @@
 _basename=deskflow
 pkgname=${_basename}
 pkgver=1.17.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
 arch=('x86_64')
 url="https://deskflow.org/"
@@ -48,6 +48,7 @@ prepare() {
 	cd "$_basename"
 	cmake -B build \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
 		-Wno-dev
 }
 
