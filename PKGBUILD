@@ -3,11 +3,14 @@
 # INFO: By default this package is configured to use Wayland only.
 #       In order to complile version for use with X11, install optional dependencies for that case.
 
+# TIP: You can speed up compiling process by setting `MAKEFLAGS="-j $(nproc)"` (or a fixed number)
+#      in your `/etc/makepkg.conf` file to use more threads.
+
 _basename=deskflow
 pkgname=${_basename}
-pkgver=1.17.0
-pkgrel=10
-pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers (stable version)"
+pkgver=1.17.1
+pkgrel=1
+pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('x86_64')
 url="https://deskflow.org/"
 license=('GPL-2.0')
@@ -20,6 +23,8 @@ depends=(
 	'qt6-base'
 	'gdk-pixbuf2'
 	'pugixml'
+	'tomlplusplus'
+	'libxkbfile'
 )
 makedepends=(
 	'git'
@@ -27,7 +32,6 @@ makedepends=(
 	'python'
 	'libxkbfile'
 	'gtest'
-	'tomlplusplus'
 	'cli11'
 )
 optdepends=(
@@ -37,12 +41,11 @@ optdepends=(
 	# 'libxext: X11 support' # dependency of libxtst
 	# 'libxi: X11 support' # dependency of libxtst
 	'libxkbcommon-x11: X11 support'
-	'libxkbfile: X11 support'
 	'libxinerama: X11 support'
 	'libxrandr: X11 support'
 )
 source=("$_basename::git+https://github.com/deskflow/deskflow.git#tag=v$pkgver")
-sha256sums=('39928f513169fef741b98c756e52c703072959a0d8aa03ab15d91d6f03ca5391')
+sha256sums=('baec26e8d436d4f4f4a85bebed4a98fd6f1ac162f41d99bc76f971cb368c957b')
 
 prepare() {
 	cd "$_basename"
