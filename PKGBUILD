@@ -1,73 +1,77 @@
-# Maintainer: SelfRef <arch@selfref.dev>
-
-# INFO: By default this package is configured to use Wayland only.
-#       In order to complile version for use with X11, install optional dependencies for that case.
-
-# TIP: You can speed up compiling process by setting `MAKEFLAGS="-j $(nproc)"` (or a fixed number)
-#      in your `/etc/makepkg.conf` file to use more threads.
-
-_basename=deskflow
-pkgname=${_basename}
+pkgname=deskflow
 pkgver=1.17.1
-pkgrel=1
-pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
-arch=('x86_64')
-url="https://deskflow.org/"
-license=('GPL-2.0')
+pkgrel=2
+pkgdesc='Share one mouse and keyboard between multiple computers'
+url='https://deskflow.org/'
+arch=(x86_64)
+license=(LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception)
 depends=(
-	'libxtst'
-	'libxkbcommon'
-	'libnotify'
-	'libei'
-	'libportal'
-	'qt6-base'
-	'gdk-pixbuf2'
-	'pugixml'
-	'tomlplusplus'
-	'libxkbfile'
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  hicolor-icon-theme
+  libei
+  libglvnd
+  libice
+  libnotify
+  libportal
+  libsm
+  libx11
+  libxext
+  libxi
+  libxinerama
+  libxkbcommon
+  libxkbcommon-x11
+  libxkbfile
+  libxrandr
+  libxtst
+  openssl
+  pugixml
+  qt6-base
+  tomlplusplus
 )
 makedepends=(
-	'git'
-	'cmake'
-	'python'
-	'libxkbfile'
-	'gtest'
-	'cli11'
+  cli11
+  cmake
+  git
+  gtest
+  ninja
+  python
+  qt6-tools
 )
-optdepends=(
-	'openssl: TLS encryption'
-	'gtk3: GTK file/dir picker'
-	# 'libx11: X11 support' # dependency of libxtst
-	# 'libxext: X11 support' # dependency of libxtst
-	# 'libxi: X11 support' # dependency of libxtst
-	'libxkbcommon-x11: X11 support'
-	'libxinerama: X11 support'
-	'libxrandr: X11 support'
-)
-source=("$_basename::git+https://github.com/deskflow/deskflow.git#tag=v$pkgver")
+source=("git+https://github.com/deskflow/deskflow.git#tag=v${pkgver}")
 sha256sums=('baec26e8d436d4f4f4a85bebed4a98fd6f1ac162f41d99bc76f971cb368c957b')
-
-prepare() {
-	cd "$_basename"
-	cmake -B build \
-		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations" \
-		-Wno-dev
-}
+b2sums=('c01f06d9e9f20ec449bb0caa62128be087d0eb2e49bdb8a744895ee45c8609e15c2920e2e65b6c65dc6e8f5adb4d360b06418ed44f3baf31857d3c463f57f6b3')
 
 build() {
-	cd "$_basename"
-	cmake --build build
+  cd "${pkgname}"
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_FLAGS="${CFLAGS}" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
+    -Wno-dev \
+    -G Ninja \
+    -B build \
+    -S .
+  cmake --build build --verbose
 }
 
 check() {
-	cd "$_basename"
-	export QT_QPA_PLATFORM=offscreen
-	./build/bin/unittests
-	./build/bin/integtests
+  cd "${pkgname}"
+  export QT_QPA_PLATFORM=offscreen
+  ./build/bin/unittests
+  ./build/bin/integtests
 }
 
 package() {
-	cd "$_basename"
-	DESTDIR="$pkgdir" cmake --install build
+  cd "${pkgname}"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm 644 README.md doc/configuration.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
