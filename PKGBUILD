@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Share one mouse and keyboard between multiple computers'
 url='https://deskflow.org/'
 arch=(x86_64)
-license=(LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception)
+license=('GPL-2.0-only WITH LicenseRef-OpenSSL-Exception')
 depends=(
   gcc-libs
   gdk-pixbuf2
