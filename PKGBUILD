@@ -1,5 +1,5 @@
 pkgname=deskflow
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Share one mouse and keyboard between multiple computers'
 url='https://deskflow.org/'
@@ -42,8 +42,8 @@ makedepends=(
   xorgproto
 )
 source=("git+https://github.com/deskflow/deskflow.git#tag=v${pkgver}")
-sha256sums=('b56a9e1cabe22de92d28a08c3dd9520d0113efd4b71e2d323c4ac3d46d71e673')
-b2sums=('e7afe074729119cd989dfd63218dfa103061de2a911f0ec75199ceb83707d10ef3faf99a052e3b60105af3f6c73920af682f87e76548c4f43a7dee00e64a3820')
+sha256sums=('1d632a6565a6171ce1923d8ac587f02262c83591bef4be8c0e75e3b8adadd9fc')
+b2sums=('2ba3e08d822d8c461699715515f0effb303acca78dfbf1811bf6bdf0d5506dd08648e7c851c9c0cd6f2698bc7c317a9057d5aea639bbc52c528983a21b6aca40')
 
 build() {
   cd "${pkgname}"
@@ -72,7 +72,6 @@ package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 README.md doc/configuration.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
