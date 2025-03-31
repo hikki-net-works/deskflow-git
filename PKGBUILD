@@ -1,5 +1,5 @@
 pkgname=deskflow
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='Share one mouse and keyboard between multiple computers'
 url='https://deskflow.org/'
