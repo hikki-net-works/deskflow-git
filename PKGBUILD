@@ -39,8 +39,14 @@ makedepends=(
   xorgproto
 )
 source=("git+https://github.com/deskflow/deskflow.git#tag=v${pkgver}")
-sha256sums=('53620ef0192bc92972a8e4ed8b633ad16ad0a8e220a07add97b6b756ac3d6d30')
-b2sums=('89236004b08b1b5ac05a531d097da1acaafdc7f24330121967b36717e0f6aff22fe7c149d2effccf8e882afca1f88c20df1052afd8797faf7d39be88cc7edce5')
+sha256sums=('5afdc2a2580ee0261d350581dc6a9f20a759111218fd877bc97ebcc747dfd58f')
+b2sums=('66278f4726d9f2951a2aab4a7b020bc5e190dc50195343fa2fe8e0a16af2b1349ca2c36de1cead6f06c880f21de09d64ad289b52ef29be0720debd6796eb58ae')
+
+prepare() {
+  cd "${pkgname}"
+  # backport test settings fixes
+  git cherry-pick -n 6bbebe75f9f9d2cdc10b454ec5ec9d7ee21b4b03
+}
 
 build() {
   cd "${pkgname}"
