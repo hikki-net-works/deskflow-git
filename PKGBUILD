@@ -42,12 +42,6 @@ source=("git+https://github.com/deskflow/deskflow.git#tag=v${pkgver}")
 sha256sums=('e5fe94158fbaedbe397e077d2af680a2a6fd358ae0ed79575388acba79931773')
 b2sums=('e5c539a4bccaf4f8635cf010e941e940a8b287d292bc31fe64d99494c73b782274d10b037b2f5e7815f08b24631dcad00618a3d3f54867c7d36adba61d1f5e3f')
 
-prepare() {
-  cd "${pkgname}"
-  # backport test settings fixes
-  git cherry-pick -n 6bbebe75f9f9d2cdc10b454ec5ec9d7ee21b4b03
-}
-
 build() {
   cd "${pkgname}"
   cmake \
