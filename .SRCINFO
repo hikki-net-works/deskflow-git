@@ -1,7 +1,7 @@
 pkgbase = deskflow
 	pkgdesc = Share one mouse and keyboard between multiple computers
 	pkgver = 1.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deskflow.org/
 	arch = x86_64
 	license = GPL-2.0-only WITH LicenseRef-OpenSSL-Exception
@@ -33,6 +33,7 @@ pkgbase = deskflow
 	depends = libxtst
 	depends = openssl
 	depends = qt6-base
+	depends = qt6-svg
 	depends = tomlplusplus
 	source = git+https://github.com/deskflow/deskflow.git#tag=v1.21.2
 	sha256sums = e5fe94158fbaedbe397e077d2af680a2a6fd358ae0ed79575388acba79931773

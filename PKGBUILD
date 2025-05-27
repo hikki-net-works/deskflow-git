@@ -1,6 +1,6 @@
 pkgname=deskflow
 pkgver=1.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Share one mouse and keyboard between multiple computers'
 url='https://deskflow.org/'
 arch=(x86_64)
@@ -26,6 +26,7 @@ depends=(
   libxtst
   openssl
   qt6-base
+  qt6-svg
   tomlplusplus
 )
 makedepends=(
