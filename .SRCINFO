@@ -1,6 +1,6 @@
 pkgbase = deskflow-git
 	pkgdesc = Share one mouse and keyboard between multiple computers
-	pkgver = v1.22.0.r109.g5d594dd
+	pkgver = v1.23.0.r0.g56f7a0d
 	pkgrel = 1
 	url = https://deskflow.org/
 	arch = x86_64
@@ -37,8 +37,8 @@ pkgbase = deskflow-git
 	depends = qt6-base
 	depends = qt6-svg
 	depends = tomlplusplus
-	source = git+https://github.com/deskflow/deskflow.git#commit=5d594dd6bebbe981925391fd5b15f5fb2258e298
-	sha256sums = d25283521f02d4d527cc408798038aa4bd693d3dcf388b6e959d761ef4105126
-	b2sums = 63bf30f8a9282235d27b491b0460202808e5aaca23d53ee5ef6fa86e74b4f8daf72ee750fdb327582f8f69d369f6e7c4dec20e62c217fd555681f6322087b312
+	source = git+https://github.com/deskflow/deskflow.git#commit=56f7a0d7b5095ca1f1fa9a3e663cc30d40e3bc54
+	sha256sums = 25dd0db9ba3b7ef7b3080ceafd08317d2138ae29461ee462aa5be9bd2f16b67e
+	b2sums = 941a0959005260ea156d4356368c04c46c15ce4cdc88c754a52a15d41ee13b45ac26dc8f5e93c3ae3c4c1c37cda6cd8460ddc28885b73a4bf9c0677e91ef0cc2
 
 pkgname = deskflow-git
