@@ -1,6 +1,6 @@
 _pkgname=deskflow
 pkgname=$_pkgname-git
-pkgver=v1.23.0.r0.g56f7a0d
+pkgver=v1.23.0.r145.g34c439b
 pkgrel=1
 pkgdesc='Share one mouse and keyboard between multiple computers'
 url='https://deskflow.org/'
@@ -40,13 +40,13 @@ makedepends=(
   qt6-tools
   xorgproto
 )
-_commit=e69be64773ca4eac3042c54ffd197b22fdfc3d76
+_commit=34c439b3de4518f770af09efd8f23a9b9df87fb6
 source=("git+https://github.com/deskflow/deskflow.git#commit=$_commit")
-sha256sums=('57bf05c9530df9ab6d9f5a6eea3b979c9681fcd27ed37cefc401e4307f0e2e91')
-b2sums=('e58fd55d041b3082105e21aeef0f2bb64942caaf24d248d075fa857b25d75c1e347007ac6b744000bda143dc905f9867a4be11cbf49df25d78eee6845b049c5d')
+sha256sums=('5fa00a2417f1eca272b2590ef133454b16d3044fc37c78d44f53fb7e1cb6cb8f')
+b2sums=('1ba94575d8bbeba4886aff989609de9d73c4f608fd9d347fff1ac0a92ce5ea868e615422dfbd7022a5737291f7a52eab8e2d279043818576649f5a543c0f818a')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -54,7 +54,8 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "$srcdir/$_pkgname"
+  
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
@@ -70,13 +71,13 @@ build() {
 }
 
 check() {
-  cd "${_pkgname}"
+  cd "$srcdir/$_pkgname"
   export QT_QPA_PLATFORM=offscreen
   ./build/bin/legacytests
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "$srcdir/$_pkgname"
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 README.md doc/user/configuration.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
